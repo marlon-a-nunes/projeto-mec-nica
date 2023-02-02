@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Cliente
+{% endblock %}
+
+{% block content %}
+  
+{% for car in client.cars.all %}
+    <h3>Carro</h3>
+    <p>{{ car.car }}</p>
+    <p>{{ car.car_year }}</p>
+    <p>{{ car.board }}</p>
+    <h3>Peças</h3>
+  {% for part in car.parts.all %}
+    <p>Produto: {{ part.name_parts }}</p>
+    <p>Número de série: {{ part.serial_number }}</p>
+    <p>Preço: {{ part.parts_price }}</p>
+    
+  {% endfor %}
+  <h3>Serviços</h3>
+  {% for service in car.services.all %}
+    <p>Serviço: {{ service.service }}</p>
+    <p>Serviço realizado: {{ service.description }}</p>
+    <p>Preço do Serviço: {{ service.service_price }}</p>
+    
+  {% endfor %}
+{% endfor %}
+  
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Carros{% endblock %}
+
+{% block content %}
+
+
+{% for client in clients  %}
+<span>Cliente: <a href="/car/{{client.id}}">{{client.first_name}} {{client.last_name}}</a></span>
+   <p>CPF: {{client.cpf}}</p>
+   <p>Telefone: {{client.phone_number}}</p>
+ 
+{% endfor %}
+
+<form action="/newclient/" method="POST">   
+   {% csrf_token %}
+   <input  type="submit" value="Adicionar Cliente">
+
+</form>
+
+ 
+
+{% endblock %}
